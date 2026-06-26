@@ -15,7 +15,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(115% 85% at 72% 22%, rgba(94,124,107,0.12), transparent 58%)",
+            "radial-gradient(115% 85% at 72% 22%, rgb(var(--sage-rgb) / 0.12), transparent 58%)",
         }}
       />
 
@@ -44,7 +44,7 @@ export default function Hero() {
               </CtaButton>
             </div>
 
-            <p className="mt-6 text-sm text-bone/45">
+            <p className="mt-6 text-sm text-bone/55">
               {/* TODO: confirmă detaliile reale cu Sorin */}
               Răspund în aceeași zi · Evaluare inițială, fără angajament.
             </p>

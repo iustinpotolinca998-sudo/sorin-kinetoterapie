@@ -13,7 +13,7 @@ export default function SiteHeader() {
         <Link
           href="/"
           className="font-display text-lg tracking-tight text-bone"
-          aria-label="Kinetoterapie Sorin — acasă"
+          aria-label="Kinetoterapie Sorin, acasă"
         >
           Sorin
           <span className="text-bone/55"> · kinetoterapie</span>

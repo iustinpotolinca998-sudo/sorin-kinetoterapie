@@ -40,16 +40,21 @@ const config: Config = {
         // UNDER REVIEW for the Claude Design lock (see PROGRESS.md → "Conflicte
         // semnalate"): proposed palette resembles a known AI-default. Swap here
         // only — components read the token, never the hex.
+        // Base hue lives once as --sage-rgb (globals.css) so the hero glow and
+        // every utility share a single source of truth.
         sage: {
-          DEFAULT: "#5E7C6B",
+          DEFAULT: "rgb(var(--sage-rgb) / <alpha-value>)",
           600: "#4F6B5B",
           200: "#C5D2C9",
         },
         // CTA accent — warm clay. Reserved EXCLUSIVELY for conversion actions
         // (the booking KPI); never a background wash. UNDER REVIEW (see above).
+        // DEFAULT is the brand hue; 600/700 are the button surfaces, darkened so
+        // ivory text on them clears WCAG AA (DEFAULT alone is only 3.5:1).
         clay: {
           DEFAULT: "#C06A4B",
-          600: "#A9573B",
+          600: "#A0512F", // resting button bg — ~5.2:1 with ivory text
+          700: "#86432A", // hover button bg
           200: "#E7C2B2",
         },
         // Hairline rules / borders on ivory.

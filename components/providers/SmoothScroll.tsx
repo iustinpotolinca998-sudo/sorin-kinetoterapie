@@ -31,6 +31,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       // power3.inOut-flavoured easing, matching lib/motion.ts.
       easing: (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
       smoothWheel: true,
+      // Route in-page hash CTAs (#programare, #metoda) through Lenis so they glide.
+      anchors: true,
     });
 
     lenis.on("scroll", ScrollTrigger.update);

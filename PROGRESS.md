@@ -54,6 +54,27 @@ apărut, ce s-a extras din skill-uri.
 - Lock paletă + fonturi în Claude Design (vezi „Conflicte semnalate").
 - Date reale Sorin (NAP, telefon, email, program) — marcate `TODO` în cod.
 
+### Review adversarial + fixe aplicate
+Pass de review pe 3 dimensiuni (corectitudine/wiring, accesibilitate,
+anti-slop/tokeni), fiecare finding verificat adversarial. 14 semnalate → 10
+confirmate (4 false-pozitive respinse corect, ex. „lagSmoothing nerestaurat" =
+benign, providerul nu se demontează niciodată). Toate cele 10 aplicate:
+- **P1** `next/font` fără subset `latin-ext` → glifele RO `ș/ț/ă` cădeau pe font
+  de sistem. Adăugat `latin-ext` la Fraunces + Inter.
+- **P1** CTA primar pica contrastul WCAG AA (ivory pe clay = 3.5:1). Butonul
+  folosește acum `clay-600` (#A0512F, ~5.2:1) resting + `clay-700` hover.
+- **P2** Contrast AA: microcopy hero `bone/45`→`/55`, copyright footer
+  `bone/40`→`/55`.
+- **P2** Skip-link „Sari la conținut" adăugat (target `#main`, era orfan).
+- **P2** Lenis `anchors: true` → CTA-urile cu hash gliseaza, nu sar.
+- **P2/P3** Em-dash eliminat din title/OG, copy vizibil, și 2 `aria-label`.
+- **P3** Glow-ul hero nu mai dublează hex-ul sage: o singură sursă `--sage-rgb`,
+  citită de tokenul `sage` și de gradient.
+
+Re-verificat: `tsc --noEmit` ✅, `next build` ✅ (home tot static, 94 kB),
+zero em-dash în `app/`+`components/`, CSS compilat confirmat (var sage, clay-600/700,
+skip-link).
+
 ---
 
 ## Ce s-a extras din skill-uri (Sprint 0)

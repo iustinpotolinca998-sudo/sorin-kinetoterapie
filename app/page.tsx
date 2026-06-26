@@ -87,7 +87,7 @@ export default function HomePage() {
               </div>
               <p className="mt-6 text-sm text-ink-muted">
                 {/* TODO: date reale Sorin */}
-                Telefon și adresă de email — placeholder până la datele reale.
+                Telefon și adresă de email reale, de completat înainte de lansare.
               </p>
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <p className="mt-12 text-xs text-bone/40">
+          <p className="mt-12 text-xs text-bone/55">
             © {year} Kinetoterapie Sorin, Iași.
           </p>
         </div>

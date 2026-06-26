@@ -12,7 +12,7 @@ export default function HeroFigure({ className = "" }: { className?: string }) {
     <svg
       viewBox="0 0 320 440"
       role="img"
-      aria-label="Figură anatomică stilizată — mișcarea revine în corp"
+      aria-label="Figură anatomică stilizată, mișcarea revine în corp"
       className={className}
       fill="none"
       stroke="currentColor"

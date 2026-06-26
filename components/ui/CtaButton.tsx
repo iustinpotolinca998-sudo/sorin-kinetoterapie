@@ -30,7 +30,7 @@ export default function CtaButton({
 
   const styles: Record<Variant, string> = {
     primary:
-      "bg-clay text-ivory shadow-[0_1px_0_0_rgba(0,0,0,0.04)] hover:bg-clay-600 hover:-translate-y-px",
+      "bg-clay-600 text-ivory shadow-[0_1px_0_0_rgba(0,0,0,0.04)] hover:bg-clay-700 hover:-translate-y-px",
     ghost: onDark
       ? "text-bone/80 hover:text-bone underline-offset-4 hover:underline decoration-sage"
       : "text-ink-soft hover:text-ink underline-offset-4 hover:underline decoration-sage",

@@ -4,14 +4,15 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import "./globals.css";
 
 const fraunces = Fraunces({
-  subsets: ["latin"],
+  // latin-ext carries Romanian ș/ț/ă/Ș/Ț glyphs — required, latin alone drops them.
+  subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-display",
   axes: ["opsz", "SOFT", "WONK"],
 });
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-sans",
 });
@@ -21,7 +22,7 @@ const SITE_URL = "https://kinetoterapie-sorin.ro"; // TODO: confirma domeniul fi
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Kinetoterapie Sorin — Recuperare medicală în Iași",
+    default: "Kinetoterapie Sorin · Recuperare medicală în Iași",
     template: "%s · Kinetoterapie Sorin Iași",
   },
   description:
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     locale: "ro_RO",
     url: SITE_URL,
     siteName: "Kinetoterapie Sorin",
-    title: "Kinetoterapie Sorin — Recuperare medicală în Iași",
+    title: "Kinetoterapie Sorin · Recuperare medicală în Iași",
     description:
       "Recuperare după accidentări, durere de spate și reabilitare post-operatorie. Programează o evaluare cu Sorin, în Iași.",
   },
@@ -60,6 +61,12 @@ export default function RootLayout({
   return (
     <html lang="ro" className={`${fraunces.variable} ${inter.variable}`}>
       <body>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-toast focus:rounded-card focus:bg-night focus:px-4 focus:py-2 focus:text-bone"
+        >
+          Sari la conținut
+        </a>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
