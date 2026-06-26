@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    /* Single source for the sage base hue — mirrored by the `sage` token
+       (tailwind.config.ts) and the hero glow (Hero.tsx). #5E7C6B. */
+    --sage-rgb: 94 124 107;
+  }
+
+  html {
+    /* Lenis drives scrolling; keep the native fallback graceful. */
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Lenis: disable native smooth scroll once JS smoothing is active. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-ivory text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: theme("colors.sage.200");
+    color: theme("colors.ink.DEFAULT");
+  }
+
+  /* Single, visible keyboard focus treatment site-wide. */
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid rgb(var(--sage-rgb));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3 {
+    /* text-balance / text-pretty ship natively in Tailwind 3.4+. */
+    @apply font-display text-balance;
+  }
+}
+
+/* Respect reduced-motion: kill scrub/parallax, keep content fully usable. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
