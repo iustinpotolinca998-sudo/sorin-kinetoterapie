@@ -10,6 +10,27 @@ consumată de canvas-ul din Sprint 2 (`lib/hero.ts` → `HERO_SEQUENCE`).
 > producție: rulează-i în mediul tău local (VS Code) unde ai skill-ul și
 > tooling-ul, sau pune manual frame-urile produse în `/public/frames`.
 
+## Alternativă: Higgsfield (CLI + skills)
+
+CLI-ul `@higgsfield/cli` și skill-urile `higgsfield-*` (în `.agents/skills/`)
+pot genera figura/clipul heroului fără pipeline-ul local. **Blocaj cunoscut:** în
+mediul remote curent, politica de egress respinge `higgsfield.ai` cu 403, deci
+nu funcționează aici până nu se deblochează rețeaua.
+
+### Resume într-o sesiune nouă (după deblocarea rețelei)
+1. **Allowlist** în environment-ul de Claude Code on the web:
+   `higgsfield.ai, api.higgsfield.ai, mcp.higgsfield.ai, fnf-device-auth.higgsfield.ai`
+   (dacă descărcarea assets-urilor pică pe alt host CDN, îl citim din
+   `curl $HTTPS_PROXY/__agentproxy/status` și îl adăugăm).
+2. Pornește o **sesiune nouă** (politica nu se aplică la cald).
+3. Reinstalează CLI-ul (containerul e proaspăt): `npm install -g @higgsfield/cli`
+4. `higgsfield auth login` → autorizezi codul în browser pe telefon/laptop.
+5. Verifică: `higgsfield account` și `higgsfield model list`.
+6. Generează conform skill-ului `higgsfield-generate` + brief-ul de mai jos
+   (figură off-white cald pe fundal aproape negru, arc injury → recovery).
+7. Pune WebP-urile în `/public/frames`, setează `HERO_SEQUENCE.frameCount`,
+   validezi vizual, apoi Sprint 2.
+
 ## Conceptul
 
 O figură anatomică umană cinematică, off-white cald (`#F4EEE6`) pe fundal
